@@ -1,0 +1,16 @@
+### vim ###
+*.swp
+
+### Intellij ###
+.idea/
+*.iml
+
+### Maven ###
+target/
+
+.DS_Store
+
+# Gradle
+.gradle/
+build/
+out/
