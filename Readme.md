@@ -1,14 +1,15 @@
 <h1 align="center">Bloom Filter</h1>
 
 ### Simple bloom filter implementation in kotlin
-  Uses standard formulas to deduce space allocation and hash functions
+Uses standard formulas to allocate the size and number of hash functions
 
 #### Initialization
 Can be initialized as following
 
-1)BloomFilter(size, numberOfElements) when space allocation is known
+1)BloomFilter(size, numberOfElements) when size of the filter can be provided by the user
 
-2)BloomFilter(numberOfElements) - Here the space allocation is calculated on the formula - m = -((n*ln(p))/(ln(2)^2))
+2)BloomFilter(numberOfElements) - Here the size for the filter is calculated on the formula - m = -((n*ln(p))/(ln(2)^2))
+where m = size, n = number of elements, p-false positive rate
 
 #### Hash Function
 The number of hash functions needed are calculated by the filter itself using the formula mln2/n

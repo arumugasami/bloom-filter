@@ -28,7 +28,7 @@ class BloomFilter(
      */
     fun addSingleWord(word: String) {
         if (sizeUsed > (size * .7)) {
-            throw SizeExceededException("80% of the bitset is filled")
+            throw SizeExceededException("70% of the bitset is filled")
         }
         val length = word.length
         for (iteration in 1..hashCount) {

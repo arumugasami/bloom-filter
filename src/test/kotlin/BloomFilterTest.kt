@@ -12,19 +12,19 @@ internal class BloomFilterTest {
         // given
         val size = 10000000
         val expectedSize = 1000000
-        val expectedhash = ((size * 0.693) / expectedSize).roundToInt()
+        val expectedhashCount = ((size * 0.693) / expectedSize).roundToInt()
 
         // when
         val bloomFilter = BloomFilter(size, expectedSize)
 
         // then
-        assertThat(bloomFilter.hashCount).isEqualTo(expectedhash)
+        assertThat(bloomFilter.hashCount).isEqualTo(expectedhashCount)
     }
 
     @Test
     fun `all added elements are returned true on calling the filter`() {
         // given
-        val bloomFilter = BloomFilter(100000, 10000)
+        val bloomFilter = BloomFilter( 10000)
         val list: MutableList<String> = arrayListOf()
         val minWordLength = 1
         for (i in 0..10000) {
@@ -52,12 +52,14 @@ internal class BloomFilterTest {
         val bloomFilter = BloomFilter(100000)
         val minWordLength = 1
 
+        // set1
         val setToLoadValuesToFilter: MutableSet<String> = HashSet()
         for (i in 0..100000) {
             val toInt = ((Math.random() * 10) + minWordLength).toInt()
             setToLoadValuesToFilter.add(randomAlphabetic(toInt))
         }
 
+        // set2
         val setForCheckingFalsePositives: MutableSet<String> = HashSet()
         for (i in 0..1000) {
             val toInt = ((Math.random() * 10) + minWordLength).toInt()
@@ -83,7 +85,7 @@ internal class BloomFilterTest {
     }
 
     @Test
-    fun `should Throw Exception when size exceed 80%`() {
+    fun `should Throw Exception when size exceeds 70%`() {
         // given
         val bloomFilter = BloomFilter(100000, 10000)
         val list: MutableList<String> = arrayListOf()
